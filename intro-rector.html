@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Intro to RectorPHP by cabbey</title>
+		<meta name="author" content="cabbey@smugmug.com">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+
+    <!-- my theme for the slide deck -->
+		<link rel="stylesheet" href="dist/theme/cabbey.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/solarized-dark.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Intro to RectorPHP</h1>
+					<span style="float: left; width: 25%; ">
+						<img src="https://phptek.io/assets/images/phptek-2025.svg" alt="php[tek] 2025"/>
+					</span>
+					<span style="float: right; width: 25%; ">
+						<img src="./media/Awesome%20Logo%20no%20back.svg" alt="əwesome"/>
+					</span>
+					<p>by cabbey (he/him)<br>20 May 2025</p>
+          <p><img src="https://phpc.social/packs/media/images/logo-d4b5dc90fd3e117d141ae7053b157f58.svg" alt="Mastodon" style="height: 0.6em; margin: 0; alignment-baseline: center;"> cabbey@phpc.social</p>
+          <p><img src="media/mark-github-24.svg" alt="github: " style="height: 0.6em; margin: 0; alignment-baseline: center;"/> cabbey</p>
+				</section>
+        <guidepost>intro cabbey</guidepost>
+				<section>
+					<section>
+						<h1 class="r-fit-text">Intro to cabbey</h1>
+					</section>
+					<section>
+						<div>
+							<img src="media/cabbey.jpg" alt="cabbey"/>
+							<span class="attribution">Photo by Chris MacAskill</span>
+						</div>
+					</section>
+					<section>
+						<h1>Disclaimers</h1>
+						<p>I'm not a member of the RectorPHP project.</p>
+						<p>I've submitted 1 patch to the project. <small>(so far)</small></p>
+
+					</section>
+				</section>
+        <guidepost>intro awesome</guidepost>
+        <section>
+					<section>
+						<h1>Intro to Awesome</h1>
+						<p>Building a better world through<br>
+							the power of photography.</p>
+						<a href="//awesome.co">awesome.co</a>
+
+					</section>
+					<section data-background-color="#002b36">
+						<a href="//awesome.co"><img src="media/awesome%20horizontal%20over%20dark%20600Asset%206.png" alt="awesome"/></a>
+
+					</section>
+					<section data-background-color="#002b36">
+						<a href="//smugmug.com"><img src="media/SmugMug%20Logo%20on%20black.jpg" alt="SmugMug"/></a>
+
+					</section>
+					<section data-background-color="#002b36">
+						<a href="//flickr.com"><img src="media/Flickr%20Logo%20on%20black%20newer.jpg" alt="Flickr"/></a>
+					</section>
+          <section data-background-video-loop="loop" data-background-video="https://cdn.prod.website-files.com/5f7a5e204f25f20dc72567dc/60090cbb89521357ce36360c_SmugMug_HomePageLoop_V2-1920-transcode.mp4,https://cdn.prod.website-files.com/5f7a5e204f25f20dc72567dc/60090cbb89521357ce36360c_SmugMug_HomePageLoop_V2-1920-transcode.webm">
+            <a href="//smugmug.com/films"><h1>SmugMug Films</h1></a>
+
+          </section>
+					<section>
+						<a href="//flickr.org"><img src="media/flickr-logo-new.svg" alt="Flickr Foundation" width="1200"/></a>
+
+					</section>
+          <section data-background-color="#002b36">
+            <a href="//thisweekinphoto.com"><img src="media/TWiP%20Logo%20white%20on%20black.jpg" alt="TWiP"/></a>
+
+          </section>
+					<section>
+						<h1>More to come...</h1>
+
+					</section>
+				</section>
+        <guidepost>intro rector</guidepost>
+        <section>
+					<section>
+						<h1><span class="fragment" data-fragment-index="1">!(</span>Intro to RectorPHP<span class="fragment" data-fragment-index="1">)</span></h1>
+					</section>
+					<section>
+						<h1>What isn't it?</h1>
+						<ul>
+							<li class="fragment">A Framework</li>
+							<li class="fragment">AI/ML/LLM!</li>
+						</ul>
+
+					</section>
+					<section>
+						<h1>What IS it?</h1>
+						<p>
+							A
+							<span class="fragment highlight-current-red">tool</span>
+							for the
+							<span class="fragment highlight-current-red">automated</span>
+							<br/>
+							<span class="fragment highlight-current-red">transformation</span>
+							of
+							<span class="fragment highlight-current-red">source code</span>
+							<br/>via
+							<span class="fragment highlight-current-red">configurable</span>
+							<span class="fragment highlight-current-red">rules</span>.
+						</p>
+					</section>
+				</section>
+
+        <guidepost>it's a tool</guidepost>
+
+        <section>
+          <section>
+            <h1>What IS it?</h1>
+            <p>
+              A <span style="color: #dc322f;">tool</span> for the
+              automated
+              <br/>
+              transformation of source code
+              <br/>via
+              configurable rules.
+            </p>
+          </section>
+          <section>
+            <h1>Getting Rector</h1>
+          </section>
+
+          <section>
+            <h1>Websites</h1>
+            <ol>
+              <li>GetRector.com
+                <ul class="fragment" data-fragment-index="1">
+                  <li>looking up rules/sets</li>
+                  <li>general docs</li>
+                </ul>
+              </li>
+              <li>github.com/rectorphp/rector
+                <ul class="fragment" data-fragment-index="1">
+                  <li>install docs</li>
+                  <li>detailed tool usage</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h1>Install</h1>
+            <code>composer require rector/rector --dev</code>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Install (alternate approach)</h1>
+            <p>Make a separate repo just to<br/>keep all your Rector files in.</p>
+            <p>Composer install in that<br/>repo just like normal.</p>
+          </section>
+          <section>
+            <h1>Usage</h1>
+            <ol class="r-fit-text">
+              <li>Install Rector</li>
+              <li>Create a config file</li>
+              <li><code>vendor/bin/rector process path/to/code --dry-run</code></li>
+              <li><code>vendor/bin/rector process path/to/code</code></li>
+              <li>Commit the changes</li>
+            </ol>
+          </section>
+          <section>
+            <h1>Config file</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="|1|2|4-11|5-8|9-11">
+use Rector\Config\RectorConfig;
+use Rector\Php83\Rector\FuncCall\RemoveGetClassGetParentClassNoArgsRector;
+
+return RectorConfig::configure()
+  ->withPaths([
+    __DIR__ . '/src',
+    __DIR__ . '/tests',
+  ])
+  ->withRules([
+    RemoveGetClassGetParentClassNoArgsRector::class,
+  ]);
+              </code>
+						</pre>
+          </section>
+          <section>
+            <h1 class="r-fit-text">Configurable options</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  ->withIndent(indentChar: ' ', indentSize: 4);
+							</code>
+						</pre>
+          </section>
+          <section>
+            <h1 class="r-fit-text">Configurable options</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  ->withPaths([
+    __DIR__ . '/vendor/something/package',
+  ])
+  ->withDowngradeSets(php80: true);
+							</code>
+						</pre>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Composer Version Detection</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  ->withComposerBased(
+    twig: true,
+    doctrine: true,
+    phpunit: true,
+    symfony: true
+  );
+							</code>
+						</pre>
+
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Multiple Configurations</h1>
+            <pre class="ast-code-sample">
+							<code class="shell" >
+vendor/bin/rector --config pathTo/YourConfig.php ...
+							</code>
+						</pre>
+          </section>
+
+
+
+          <section>
+            <h1 class="r-fit-text">Example Run</h1>
+            <pre class="ast-code-sample">
+							<code class="shell" data-trim data-line-numbers="1-3|4|5-8|9-17|19,20|23">
+          $ vendor/bin/rector process \
+                --config example/uselogging-config.php \
+                --dry-run
+          1/1 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+          1 file with changes
+          ===================
+
+          1) example/UsesLogging.php:3
+
+          ---------- begin diff ----------
+          @@ @@
+          declare(strict_types=1);
+
+          class UsesLogging {
+          -    use \YeOldeLib\Log\LogAware;
+          +    use \Shiny\NewThing\Logging\LoggerAwareTrait;
+          }
+          ----------- end diff -----------
+
+          Applied rules:
+          * MigrateToModernLogging
+
+          [OK] 1 file would have been changed (dry-run) by Rector
+
+							</code>
+						</pre>
+          </section>
+
+
+
+
+          <section>
+            <h1>What IS it?</h1>
+            <p>
+              A <span style="color: #859900;">tool</span> for the
+              automated
+						<br/>
+						transformation of source code
+              <br/>via
+              configurable rules.
+            </p>
+          </section>
+        </section>
+
+        <guidepost>AST Talk</guidepost>
+
+				<section>
+          <section>
+            <h1>What IS it?</h1>
+            <p>
+              A <span style="color: #859900;">tool</span> for the
+              <span style="color: #dc322f;">automated
+						<br/>
+						transformation of source code</span>
+              <br/>via
+              configurable rules.
+            </p>
+          </section>
+					<section>
+						<h1>Intro AST</h1>
+						<p>Abstract Symbol Trees</p>
+					</section>
+					<section>
+						<div class="r-stack">
+							<div class="fragment current-visible">
+								<h1>ASTs have</h1>
+                <ul>
+									<li>nodes</li>
+									<li>links</li>
+								</ul>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A[Constant: 42]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										42
+									</code>
+								</pre>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A[Variable: $item]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										$item
+									</code>
+								</pre>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A(Operator: return) -- value --> B[Variable: $results]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										return $results;
+									</code>
+								</pre>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A(Operator: +) -- Left --> B[Variable: $item]
+										A(Operator: +) -- Right --> C[Constant: 42]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										$item + 42
+									</code>
+								</pre>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A(Operator: Assignment) -- Left --> E[Variable: $item]
+										A(Operator: Assignment) -- Right --> B(Operator: +)
+										B(Operator: +) -- Left --> C[Variable: $item]
+										B(Operator: +) -- Right --> D[Constant: 42]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										$item = $item + 42
+									</code>
+								</pre>
+							</div>
+							<div class="fragment current-visible">
+								<div class="mermaid">
+									<pre>
+									  graph TD
+										A(Branch) -- Conditional --> B((Comp: ≥))
+										B((Comp: ≥)) -- Left --> C[Variable:
+										$count]
+										B((Comp: ≥)) -- Right --> D[Constant:
+										10]
+										A(Branch) -- True --> E(MethodCall)
+										A(Branch) -- False --> F(StaticCall)
+										E(MethodCall) -- Variable --> G[Variable:
+										$this]
+										E(MethodCall) -- Method --> H[Identifier:
+										doSomething]
+										E(MethodCall) -- Argument --> I[Variable:
+										$count]
+										F(StaticCall) -- Class --> J[Class:
+										Upsell]
+										F(StaticCall) -- Method --> K[Identifier:
+										begForMore]
+										F(StaticCall) -- Argument --> L[empty]
+									</pre>
+								</div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="">
+										if ($count >= 10) {
+											$this->doSomething($count);
+										} else {
+											Upsell::begForMore();
+										}
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section data-visibility="hidden">
+						<pre class="r-stretch ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+								PhpParser\Node\Stmt\If_(
+									cond: PhpParser\Node\Expr\BinaryOp\GreaterOrEqual(
+										left: PhpParser\Node\Expr\Variable( name: "count" )
+										right: PhpParser\Node\Scalar\Int_( value: 10 )
+									)
+									stmts: [
+										0: PhpParser\Node\Stmt\Expression(
+											expr: PhpParser\Node\Expr\MethodCall(
+												var: PhpParser\Node\Expr\Variable( name: "this" )
+												name: PhpParser\Node\Identifier( name: "doSomething" )
+												args: [
+													0: PhpParser\Node\Arg(
+														name: null
+														value: PhpParser\Node\Expr\Variable( name: "count" )
+														byRef: false
+														unpack: false
+													)
+												]
+											)
+										)
+									]
+									elseifs: []
+									else: PhpParser\Node\Stmt\Else_(
+										stmts: [
+											0: PhpParser\Node\Stmt\Expression(
+												expr: PhpParser\Node\Expr\StaticCall(
+													class: PhpParser\Node\Name\FullyQualified( parts: ["Upsell"] )
+													name: PhpParser\Node\Identifier( name: "begForMore" )
+													args: []
+												)
+											)
+										]
+									)
+								)
+							</code>
+						</pre>
+
+					</section>
+
+          <section>
+            <blockquote>That seems like a lot of code to maintain just for this project, surely it's going to be buggy!</blockquote>
+            <p class="fragment">Nope! They're leveraging the same library that PHPStan uses: <a href="https://github.com/nikic/PHP-Parser">PhpParser by nikic</a>!</p>
+            <p class="fragment">There are 128 OTHER contributors in the GH repo, with the #2 spot being one of the leads of RectorPHP, #3 being a php-src contributor, #4 being a lead from PHPStan, etc...</p>
+
+          </section>
+					<section>
+						<h1 class="r-fit-text">Using an AST<br/>to change code</h1>
+						<p style="font-size: smaller">(a hypothetical example)</p>
+					</section>
+					<section>
+						<h1 class="r-fit-text">Order of Operations</h1>
+						<ol>
+							<li class="fragment" data-fragment-index="1">Parse the code into an AST</li>
+							<li class="fragment" data-fragment-index="2">Find the nodes you want to change</li>
+							<li class="fragment" data-fragment-index="3">Change the nodes</li>
+							<li class="fragment" data-fragment-index="4">Convert the AST back into code</li>
+						</ol>
+					</section>
+					<section>
+						<div class="r-stack">
+							<div>
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="|4">
+										if ($count >= 10) {
+											$this->doSomething($count);
+										} else {
+											Upsell::begForMore();
+										}
+									</code>
+								</pre>
+							</div>
+							<div class="fragment">
+								<pre class="ast-code-sample">
+									<code class="php" data-trim data-line-numbers="4">
+										if ($count >= 10) {
+											$this->doSomething($count);
+										} else {
+											$this->handleSmallCarts();
+										}
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section data-transition="fade-out">
+						<div>
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									A(Branch) -- Conditional --> B((Comp: ≥))
+									B((Comp: ≥)) -- Left --> C[Variable:
+									$count]
+									B((Comp: ≥)) -- Right --> D[Constant:
+									10]
+									A(Branch) -- True --> E(MethodCall)
+									A(Branch) -- False --> F(StaticCall)
+									E(MethodCall) -- Variable --> G[Variable:
+									$this]
+									E(MethodCall) -- Method --> H[Identifier:
+									doSomething]
+									E(MethodCall) -- Argument --> I[Variable:
+									$count]
+									F(StaticCall) -- Class --> J[Class:
+									Upsell]
+									F(StaticCall) -- Method --> K[Identifier:
+									begForMore]
+									F(StaticCall) -- Argument --> L[empty]
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section data-transition="fade">
+						<div>
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									A(Branch) -- Conditional --> B((Comp: ≥))
+									B((Comp: ≥)) -- Left --> C[Variable:
+									$count]
+									B((Comp: ≥)) -- Right --> D[Constant:
+									10]
+									A(Branch) -- True --> E(MethodCall)
+									A(Branch) -- False --> F(StaticCall)
+									E(MethodCall) -- Variable --> G[Variable:
+									$this]
+									E(MethodCall) -- Method --> H[Identifier:
+									doSomething]
+									E(MethodCall) -- Argument --> I[Variable:
+									$count]
+									F(StaticCall) -- Class --> J[Class:
+									Upsell]
+									F(StaticCall) -- Method --> K[Identifier:
+									begForMore]
+									F(StaticCall) -- Argument --> L[empty]
+									classDef ignored fill:#eee8d5,stroke:#eee8d5,edgeLabelBackground:#eee8d5;
+									class A,B,C,D,E,G,H,I ignored;
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section data-transition="fade-in">
+						<div >
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									F(StaticCall) -- Class --> J[Class:
+									Upsell]
+									F(StaticCall) -- Method --> K[Identifier:
+									begForMore]
+									F(StaticCall) -- Argument --> L[empty]
+								</pre>
+							</div>
+						</div>
+					</section>
+
+					<section data-transition="fade">
+						<div>
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									F(MethodCall) -- Class --> J[Class:
+									Upsell]
+									F(MethodCall) -- Method --> K[Identifier:
+									begForMore]
+									F(MethodCall) -- Argument --> L[empty]
+									classDef error fill:#dc322f
+									class J error
+								</pre>
+							</div>
+						</div>
+
+					</section>
+
+					<section data-transition="fade-in slide-out">
+						<div >
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									F(MethodCall) -- Variable --> J[Variable:
+									$this]
+									F(MethodCall) -- Method --> K[Identifier:
+									handleSmallCarts]
+									F(MethodCall) -- Argument --> L[empty]
+								</pre>
+							</div>
+						</div>
+
+					</section>
+					<section data-transition="slide-in fade-out">
+						<div>
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									A(Branch) -- Conditional --> B((Comp: ≥))
+									B((Comp: ≥)) -- Left --> C[Variable:
+									$count]
+									B((Comp: ≥)) -- Right --> D[Constant:
+									10]
+									A(Branch) -- True --> E(MethodCall)
+									A(Branch) -- False --> F(MethodCall)
+									E(MethodCall) -- Variable --> G[Variable:
+									$this]
+									E(MethodCall) -- Method --> H[Identifier:
+									doSomething]
+									E(MethodCall) -- Argument --> I[Variable:
+									$count]
+									F(MethodCall) -- Variable --> J[Variable:
+									$this]
+									F(MethodCall) -- Method --> K[Identifier:
+									handleSmallCarts]
+									F(MethodCall) -- Argument --> L[empty]
+									classDef ignored fill:#eee8d5,stroke:#eee8d5,edgeLabelBackground:#eee8d5;
+									class A,B,C,D,E,G,H,I ignored;
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section data-transition="fade-in slide-out">
+						<div>
+							<div class="mermaid">
+								<pre>
+								  graph TD
+									A(Branch) -- Conditional --> B((Comp: ≥))
+									B((Comp: ≥)) -- Left --> C[Variable:
+									$count]
+									B((Comp: ≥)) -- Right --> D[Constant:
+									10]
+									A(Branch) -- True --> E(MethodCall)
+									A(Branch) -- False --> F(MethodCall)
+									E(MethodCall) -- Variable --> G[Variable:
+									$this]
+									E(MethodCall) -- Method --> H[Identifier:
+									doSomething]
+									E(MethodCall) -- Argument --> I[Variable:
+									$count]
+									F(MethodCall) -- Variable --> J[Variable:
+									$this]
+									F(MethodCall) -- Method --> K[Identifier:
+									handleSmallCarts]
+									F(MethodCall) -- Argument --> L[empty]
+								</pre>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div>
+							<pre class="ast-code-sample">
+								<code class="php" data-trim data-line-numbers>
+									if ($count >= 10) {
+										$this->doSomething($count);
+									} else {
+										$this->handleSmallCarts();
+									}
+								</code>
+							</pre>
+						</div>
+					</section>
+				</section>
+
+        <section data-background-image="./media/54472758212_37a400d844_o.jpg" data-background-size="cover">
+          <div class="r-stretch">
+            <span class="attribution fragment"><a href="https://www.flickr.com/photos/nasamarshall/54472758212/in/feed-28628992-1745516828-1-72157721761543970">NASA's Marshall Space Flight Center on Flickr</a></span>
+          </div>
+        </section>
+
+        <guidepost>intro rules and sets</guidepost>
+				<section>
+          <section>
+            <h1>What IS it?</h1>
+            <p>
+              A <span style="color: #859900;">tool</span> for the
+              <span style="color: #859900;">automated
+						<br/>
+						transformation of source code</span>
+              <br/>via
+              <span class="fragment highlight-current-red">configurable rules</span>.
+            </p>
+          </section>
+					<section>
+						<h1>Rules</h1>
+					</section>
+					<section>
+						<h2>PHP 8.3 deprecations</h2>
+						<p>Calling <code>get_class()</code> and <code>get_parent_class()</code> without arguments is <a href="https://www.php.net/manual/en/migration83.deprecated.php#migration83.deprecated.core.get-class">now deprecated</a>.</p>
+						<pre class="ast-code-sample">
+							<code class="diff" data-trim >
+ class Example extends StdClass {
+   public function whoAreYou() {
+-    return get_class() . ' daughter of ' . get_parent_class();
++    return self::class . ' daughter of ' . parent::class;
+   }
+ }
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h1 class="r-fit-text">Rector has a rule for that!</h1>
+						<pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+use Rector\Config\RectorConfig;
+use Rector\Php83\Rector\FuncCall\RemoveGetClassGetParentClassNoArgsRector;
+
+return RectorConfig::configure()
+  ->withRules([
+    RemoveGetClassGetParentClassNoArgsRector::class,
+  ]);
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Rules need input</h2>
+						<p>Occasionally you'll have a rule change that needs some input to define or control what it does.</p>
+						<pre class="ast-code-sample">
+							<code class="diff" data-trim >
+-$value = SomeClass::OLD_CONSTANT;
+-$value = SomeClass::OTHER_OLD_CONSTANT;
++$value = SomeClass::NEW_CONSTANT;
++$value = DifferentClass::NEW_CONSTANT;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h1 class="r-fit-text">Rector has a rule (and a system) for that!</h1>
+						<pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="|2|3-4|7|8|9-17|10-12|13-16">
+use Rector\Config\RectorConfig;
+use Rector\Renaming\Rector\ClassConstFetch\RenameClassConstFetchRector;
+use Rector\Renaming\ValueObject\RenameClassConstFetch;
+use Rector\Renaming\ValueObject\RenameClassAndConstFetch;
+
+return RectorConfig::configure()
+  ->withConfiguredRule(
+    RenameClassConstFetchRector::class,
+    [
+      new RenameClassConstFetch(
+        'SomeClass', 'OLD_CONSTANT', 'NEW_CONSTANT'
+	    ),
+	    new RenameClassAndConstFetch(
+        'SomeClass', 'OTHER_OLD_CONSTANT',
+        'DifferentClass', 'NEW_CONSTANT'
+	    ),
+    ]
+  );
+							</code>
+						</pre>
+					</section>
+          <section>
+            <h1 class="r-fit-text">Rector has a rule (and a system) for that!</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="11,14-15">
+use Rector\Config\RectorConfig;
+use Rector\Renaming\Rector\ClassConstFetch\RenameClassConstFetchRector;
+use Rector\Renaming\ValueObject\RenameClassConstFetch;
+use Rector\Renaming\ValueObject\RenameClassAndConstFetch;
+
+return RectorConfig::configure()
+  ->withConfiguredRule(
+    RenameClassConstFetchRector::class,
+    [
+      new RenameClassConstFetch(
+        SomeClass::class, 'OLD_CONSTANT', 'NEW_CONSTANT'
+	    ),
+	    new RenameClassAndConstFetch(
+        SomeClass::class, 'OTHER_OLD_CONSTANT',
+        DifferentClass::class, 'NEW_CONSTANT'
+	    ),
+    ]
+  );
+							</code>
+						</pre>
+          </section>
+          <section>
+            <h1 class="r-fit-text">Code as Config FTW!</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="|1|15-18|2|3|3-14|4-7|8-13|9-10|11-12">
+$todo = [];
+$reflector = new ReflectionClass(\YeOlde\Lib\Thing::class);
+foreach ($reflector->getConstants() as $const) {
+  $newHotness = new ReflectionClassConstant(
+    \Shiny\New\Thing::class,
+    $const->getName(),
+  );
+  $todo[] = new RenameClassAndConstFetch(
+    $const->getDeclaringClass()->getName(),
+    $const->getName(),
+    $newHotness->getDeclaringClass()->getName(),
+    $newHotness->getName()
+  );
+}
+return RectorConfig::configure()
+  ->withConfiguredRule(
+    RenameClassConstFetchRector::class,
+    $todo
+  );
+							</code>
+						</pre>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Code as Config FTW!</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="3-7|9-13|15-16|17-20|21-23|27-30">
+$todo = [];
+$reflector = new ReflectionClass(\YeOlde\Lib\Thing::class);
+$classes = [
+  \Shiny\New\Thing::class,
+  \Shiny\New\OtherThing::class,
+  \Shiny\New\ThirdThing::class,
+];
+foreach ($reflector->getConstants() as $const) {
+  $constString = $const->getName();
+  $possibleConsts = [$constString];
+  while ($start = strpos($constString, '_')) {
+    $constString = substr($constString, $start + 1);
+    $possibleConsts[] = $constString;
+  };
+  foreach ($classes as $class) {
+    foreach ($possibleConsts as $possibleConst) {
+      $newHotness = new ReflectionClassConstant(
+        $class,
+        $possibleConst
+      );
+      if (null !== $newHotness) {
+        break 2;
+      }
+    }
+  }
+  $todo[] = new RenameClassAndConstFetch(
+    $const->getDeclaringClass()->getName(),
+    $const->getName(),
+    $newHotness->getDeclaringClass()->getName(),
+    $newHotness->getName()
+  );
+}
+return RectorConfig::configure()
+  ->withConfiguredRule(
+    RenameClassConstFetchRector::class,
+    $todo
+  );
+							</code>
+						</pre>
+
+          </section>
+
+
+          <section data-transition="slide-in fade-out">
+            <h1>Sets</h1>
+            <p class="r-fit-text">Rector has pre-defined sets of rules for common tasks.</p>
+            <p>For example, the <code>PHP_83</code> set includes all the rules for deprecations and new features in PHP 8.3.</p>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="|2|5">
+use Rector\Config\RectorConfig;
+use Rector\Set\ValueObject\SetList;
+
+return RectorConfig::configure()
+  ->withSets([SetList::PHP_83]);
+							</code>
+						</pre>
+          </section>
+          <section data-transition="fade-in slide-out">
+            <h1>Sets</h1>
+            <p class="r-fit-text">Rector has pre-defined sets of rules for common tasks.</p>
+            <p>For example, the <code>PHP_83</code> set includes all the rules for deprecations and new features in PHP 8.3.</p>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="5">
+use Rector\Config\RectorConfig;
+use Rector\Set\ValueObject\SetList;
+
+return RectorConfig::configure()
+  ->withPhpSets(php83: true);
+							</code>
+						</pre>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Built-in Sets</h1>
+            <p>Rector ships with rules for basic PHP version migration, and for some frameworks and tools.</p>
+            <p>For example: Twig, Symfony, Doctrine, PHPUnit.</p>
+
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Built-in Sets</h1>
+            <p>Rector also ships with rules for code quality cleanups.</p>
+
+          </section>
+
+          <section>
+            <h1>PHPUnit</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="">
+use Rector\Config\RectorConfig;
+use Rector\PHPUnit\Set\PHPUnitSetList;
+
+return RectorConfig::configure()
+  ->withSets([
+    PHPUnitSetList::PHPUNIT_90,
+  ]);
+              </code>
+						</pre>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">What is a Set list?</h1>
+            <pre class="ast-code-sample">
+							<code class="php" data-trim data-line-numbers="|10-15|17-26|20-24">
+use Rector\Config\RectorConfig;
+use Rector\PHPUnit\PHPUnit100\Rector\StmtsAwareInterface\WithConsecutiveRector;
+use Rector\PHPUnit\PHPUnit90\Rector\Class_\TestListenerToHooksRector;
+use Rector\PHPUnit\PHPUnit90\Rector\MethodCall\ExplicitPhpErrorApiRector;
+use Rector\PHPUnit\PHPUnit90\Rector\MethodCall\SpecificAssertContainsWithoutIdentityRector;
+use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
+use Rector\Renaming\ValueObject\MethodCallRename;
+
+return static function (RectorConfig $rectorConfig): void {
+  $rectorConfig->rules([
+    TestListenerToHooksRector::class,
+    ExplicitPhpErrorApiRector::class,
+    SpecificAssertContainsWithoutIdentityRector::class,
+    WithConsecutiveRector::class,
+  ]);
+
+  $rectorConfig->ruleWithConfiguration(
+    RenameMethodRector::class,
+    [
+      new MethodCallRename(
+        PHPUnit\Framework\TestCase::class,
+        'expectExceptionMessageRegExp',
+        'expectExceptionMessageMatches'
+      ),
+    ]
+  );
+};
+              </code>
+						</pre>
+          </section>
+
+          <section>
+            <pre class="ast-code-sample r-stretch">
+							<code class="php" data-trim data-line-numbers="">
+return static function (RectorConfig $rectorConfig): void {
+  $rectorConfig->sets([
+    PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES
+  ]);
+
+  $rectorConfig->rules([
+    StaticDataProviderClassMethodRector::class,
+    PublicDataProviderClassMethodRector::class,
+    AddProphecyTraitRector::class,
+    WithConsecutiveRector::class,
+    RemoveSetMethodsMethodCallRector::class,
+    PropertyExistsWithoutAssertRector::class,
+    ParentTestClassConstructorRector::class,
+  ]);
+
+  $rectorConfig->ruleWithConfiguration(
+    RenameMethodRector::class,
+    [
+      // https://github.com/sebastianbergmann/phpunit/issues/4087
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertRegExp',
+        'assertMatchesRegularExpression'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/5220
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertObjectHasAttribute',
+        'assertObjectHasProperty'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertObjectNotHasAttribute',
+        'assertObjectNotHasProperty'
+      ),
+
+      new MethodCallRename(
+        'PHPUnit\Framework\MockObject\Rule\InvocationOrder',
+        'getInvocationCount',
+        'numberOfInvocations'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4090
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertNotRegExp',
+        'assertDoesNotMatchRegularExpression'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4078
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertFileNotExists',
+        'assertFileDoesNotExist'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4081
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertFileNotIsReadable',
+        'assertFileIsNotReadable'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4072
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertDirectoryNotIsReadable',
+        'assertDirectoryIsNotReadable'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4075
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertDirectoryNotIsWritable',
+        'assertDirectoryIsNotWritable'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4069
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertDirectoryNotExists',
+        'assertDirectoryDoesNotExist'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4066
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertNotIsWritable',
+        'assertIsNotWritable'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/issues/4063
+      new MethodCallRename(
+        'PHPUnit\Framework\Assert',
+        'assertNotIsReadable',
+        'assertIsNotReadable'
+      ),
+
+      // https://github.com/sebastianbergmann/phpunit/pull/3687
+      new MethodCallRename(
+        'PHPUnit\Framework\MockObject\MockBuilder',
+        'setMethods',
+        'onlyMethods'
+      ),
+
+      //https://github.com/sebastianbergmann/phpunit/issues/5062
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectDeprecationMessage',
+        'expectExceptionMessage'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectDeprecationMessageMatches',
+        'expectExceptionMessageMatches'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectNoticeMessage',
+        'expectExceptionMessage'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectNoticeMessageMatches',
+        'expectExceptionMessageMatches'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectWarningMessage',
+        'expectExceptionMessage'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectWarningMessageMatches',
+        'expectExceptionMessageMatches'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectErrorMessage',
+        'expectExceptionMessage'
+      ),
+      new MethodCallRename(
+        'PHPUnit\Framework\TestCase',
+        'expectErrorMessageMatches',
+        'expectExceptionMessageMatches'
+      ),
+  ]);
+};
+              </code>
+						</pre>
+          </section>
+
+          <section>
+            <h1>Levels</h1>
+            <p>Many of the sets have hundreds of changes in them.</p>
+            <p>Levels let you gradually apply those gradually.</p>
+            <div class="r-stack">
+              <pre class="ast-code-sample fragment current-visible">
+			  				<code class="php" data-trim data-line-numbers="4-6">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  ->withPreparedSets(
+    typeDeclarations: true
+  );
+                </code>
+              </pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="4-5">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  //->withPreparedSets(typeDeclarations: true)
+  ->withTypeCoverageLevel(0);
+                </code>
+  						</pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="5">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  //->withPreparedSets(typeDeclarations: true)
+  ->withTypeCoverageLevel(1);
+                </code>
+  						</pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="5">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  //->withPreparedSets(typeDeclarations: true)
+  ->withTypeCoverageLevel(2);
+                </code>
+  						</pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="5">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  //->withPreparedSets(typeDeclarations: true)
+  ->withTypeCoverageLevel(3);
+                </code>
+  						</pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="5">
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+  //->withPreparedSets(typeDeclarations: true)
+  ->withTypeCoverageLevel(getenv('LEVEL'));
+                </code>
+  						</pre>
+
+            </div>
+
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Community Sets</h1>
+            <p>Lots of community packages and projects have rector rule sets and even custom rules
+            specifically for their users. Ex: Drupal, cakephp, CraftCMS, Laminas...</p>
+
+          </section>
+
+          <section>
+            <h1>What IS it?</h1>
+            <p>
+              A <span style="color: #859900;">tool</span> for the
+              <span style="color: #859900;">automated
+						<br/>
+						transformation of source code</span>
+              <br/>via
+              <span style="color: #859900;">configurable rules</span>.
+            </p>
+          </section>
+        </section>
+        <guidepost>Caveats</guidepost>
+        <section>
+          <section>
+            <h1>What's Not To Love?!</h1>
+          </section>
+          <section>
+            <h1>Caveat Emptor</h1>
+          </section>
+          <section>
+            <h1 class="r-fit-text">Finding Rules</h1>
+            <p><a href="https://getrector.com/find-rule">GetRector.com/find-rule</a></p>
+
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Formatting Chaos</h1>
+            <p class="fragment">Use a tool to auto format your code. <b>All of it.</b></p>
+            <p class="fragment">Do this before and after using rector.<br/><span class="fragment">And probably in your commit flow.</span></p>
+            <p class="fragment">Anything with old school mix of php and<br/>html is going to be a headache.</p>
+
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Highly Opinionated Imports</h1>
+            <p class="fragment">You can either have full names everywhere (default) or you can have everything as short names with use.</p>
+            <p class="fragment">Workaround is to leave rector set to full names and use something else to refactor them more intelligently.<br/>I suggest PHPStorm's import refactor methods.</p>
+            <p class="fragment">This may not be in their control without a fair amount of work on PHP-Parser... and whatever is being used for codegen.</p>
+
+          </section>
+
+          <section>
+            <div class="r-stack r-stretch">
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  namespace Project\MyComponent\SomePortion;
+
+                  use Project\OtherComponent;
+                  use Project\ThirdThing;
+                  ...
+                  class ComponentObject {
+                    private OtherComponent\ComponentObject $otherThingOne;
+                    private ThirdThing\ComponentObject $otherThingTwo;
+                  ...
+                    public function doAllTheThings() {
+                      $this->otherThingOne->doSomething();
+                      $this->otherThingTwo->doSomething();
+                    }
+                </code>
+              </pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="patch" data-trim>
+                    public function doAllTheThings() {
+                  -    $this->otherThingOne->doSomething();
+                  -    $this->otherThingTwo->doSomething();
+                  +    $this->otherThingOne->doSomethingElse();
+                  +    $this->otherThingTwo->doSomethingElse();
+                    }
+                </code>
+              </pre>
+
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  namespace Project\MyComponent\SomePortion;
+
+                  use Project\OtherComponent;
+                  use Project\ThirdThing;
+                  ...
+                  class ComponentObject {
+                    private \Project\OtherComponent\ComponentObject $otherThingOne;
+                    private \Project\ThirdThing\ComponentObject $otherThingTwo;
+                  ...
+                    public function doAllTheThings() {
+                      $this->otherThingOne->doSomethingElse();
+                      $this->otherThingTwo->doSomethingElse();
+                    }
+                </code>
+              </pre>
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  namespace Project\MyComponent\SomePortion;
+
+                  use Project\OtherComponent\ComponentObject;
+                  use Project\ThirdThing\ComponentObject;
+                  ...
+                  class ComponentObject {
+                    private ComponentObject $otherThingOne;
+                    private ComponentObject $otherThingTwo;
+                  ...
+                    public function doAllTheThings() {
+                      $this->otherThingOne->doSomethingElse();
+                      $this->otherThingTwo->doSomethingElse();
+                    }
+                </code>
+              </pre>
+
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  namespace Project\MyComponent\SomePortion;
+
+                  use Project\OtherComponent\ComponentObject as ProjectOtherComponentComponentObject;
+                  use Project\ThirdThing\ComponentObject as ProjectThirdThingComponentObject;
+                  ...
+                  class ComponentObject {
+                    private ProjectOtherComponentComponentObject $otherThingOne;
+                    private ProjectThirdThingComponentObject $otherThingTwo;
+                  ...
+                    public function doAllTheThings() {
+                      $this->otherThingOne->doSomethingElse();
+                      $this->otherThingTwo->doSomethingElse();
+                    }
+                </code>
+              </pre>
+
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  namespace Project\MyComponent\SomePortion;
+
+                  use Project\OtherComponent;
+                  use Project\ThirdThing;
+                  ...
+                  class ComponentObject {
+                    private OtherComponent\ComponentObject $otherThingOne;
+                    private ThirdThing\ComponentObject $otherThingTwo;
+                  ...
+                    public function doAllTheThings() {
+                      $this->otherThingOne->doSomethingElse();
+                      $this->otherThingTwo->doSomethingElse();
+                    }
+                </code>
+              </pre>
+
+            </div>
+          </section>
+          <section>
+            <h1 class="r-fit-text">Questionable Comments</h1>
+            <div class="r-stack r-stretch">
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                  /**
+                   * @var string $noSoupForYou yada yada yada
+                   */
+                  private string $noSoupForYou;
+
+                  public function __construct($noSoupForYou) {
+                    $this->noSoupForYou = $noSoupForYou;
+                  }
+                </code>
+              </pre>
+
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                   /**
+                    * @param string $noSoupForYou yada yada yada
+                    */
+                   public function __construct(
+                     private string $noSoupForYou,
+                   ) {
+                </code>
+              </pre>
+
+              <pre class="ast-code-sample fragment current-visible">
+                <code class="php" data-trim data-line-numbers="">
+                    public function __construct(
+                      /**
+                       * yada yada yada
+                       */
+                      private string $noSoupForYou,
+                    ) {
+                </code>
+              </pre>
+
+
+            </div>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Heavy Sales Push</h1>
+            <div class="r-stack r-stretch">
+              <img class="fragment current-visible" src="media/getrector.com-1.png" alt="screen shot of get rector dot com"/>
+              <img class="fragment current-visible" src="media/getrector.com-2.png" alt="screen shot of get rector dot com"/>
+              <img class="fragment current-visible" src="media/getrector.com-3.png" alt="screen shot of get rector dot com"/>
+              <img class="fragment current-visible" src="media/getrector.com-4.png" alt="screen shot of get rector dot com"/>
+            </div>
+
+          </section>
+        </section>
+
+        <guidepost>my usage suggestions</guidepost>
+        <section>
+          <section>
+            <h1 class="r-fit-text">Path to Success</h1>
+            <ol>
+              <li class="fragment">Have Tests First</li>
+              <li class="fragment">Auto-format your code</li>
+              <li class="fragment">Refactor in small steps</li>
+              <li class="fragment">Commit Frequently</li>
+              <li class="fragment">Use other tools to clean up</li>
+              <li class="fragment">Retest at ever step</li>
+            </ol>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Have tests first</h1>
+            <p class="fragment">Unit tests, Functional tests, Regression Tests, Acceptance Tests, End-to-end Tests</p>
+            <p class="fragment">The more test coverage the better!</p>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Auto-format your code</h1>
+            <p class="fragment">Try to separate formatting changes<br/>from actual code logic changes.</p>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Refactor in small steps</h1>
+            <p class="fragment">Just because you're not doing the grunt work of making all the changes doesn't mean you
+              can ignore the cognitive load of understanding what the tools are doing!</p>
+            <p class="fragment">You still need to be able to think about and reason around the changes.</p>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Commit Frequently</h1>
+            <p class="fragment">Otherwise, there is little point to using small steps.</p>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Use other tools to clean up</h1>
+            <p class="fragment">This is just ONE tool in the toolbox...<br/>remember you still have all the others.</p>
+            <p class="fragment">But to try to keep manual and<br/>automated changes separated!</p>
+            <p class="fragment">And document how to make the<br/>change again in the commit message.</p>
+
+          </section>
+          <section>
+            <h1 class="r-fit-text">Retest at every step</h1>
+            <p class="fragment">The whole point of the tests is to confirm you aren't breaking anything. So periodically run them
+            again and confirm the results are the same.</p>
+
+          </section>
+
+          <section>
+            <h1>Profit!</h1>
+          </section>
+        </section>
+
+        <guidepost>Thanks</guidepost>
+        <section>
+          <h1 class="r-fit-text">Thanks to:</h1>
+          <ul>
+            <li><a href="https://www.brailleinstitute.org/freefont/">The Braille Institute</a></li>
+            <li><a href="https://ethanschoonover.com/solarized/">Ethan Schoonover</a></li>
+            <li><a href="https://revealjs.com">Reveal.js</a></li>
+            <li><a href="https://mermaid.js.org">Mermaid</a></li>
+            <li class="fragment">Alena Holligan<span class="fragment">, John Congdon and
+              Eric Van Johnson</span><span class="fragment">, Chris Skopec</span></li>
+            <li class="fragment">You! (yes, you.)</li>
+          </ul>
+
+        </section>
+        <section data-background-color="#002b36" data-background-image="media/PHPTek%202025%20-%20Slides%20Thanks.svg" data-background-size="contain">
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+          <h1>Thoughts?</h1>
+          <table>
+            <tr>
+              <td style="text-align: center; vertical-align: top;">
+                <p><img src="https://phpc.social/packs/media/images/logo-d4b5dc90fd3e117d141ae7053b157f58.svg" alt="Mastodon:" style="height: 0.6em; margin: 0; alignment-baseline: center;"> cabbey@phpc.social</p>
+              </td>
+            </tr>
+          </table>
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/mermaid/mermaid.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+        pdfSeparateFragments: false,
+				mermaid: {
+					theme: 'base',
+					themeVariables: {
+						'background': '#fdf6e3',
+						'primaryColor': '#859900',
+						'primaryTextColor': '#fdf6e3',
+						'primaryBorderColor': '#073642',
+						'secondaryColor': '#2aa198',
+						'tertiaryColor': '#268bd2',
+						'lineColor': '#002b36',
+						// 'edgeLabelBackground': '#eee8d5',
+						// 'secondaryTextColor': '#268bd2',
+						'fontFamily': 'Atkinson Hyperlegible Next',
+					},
+					// flowchart: {
+					//   curve: 'linear',
+					// },
+				},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+          // RevealMarkdown
+				plugins: [ RevealHighlight, RevealNotes, RevealMermaid ]
+			});
+		</script>
+	</body>
+</html>

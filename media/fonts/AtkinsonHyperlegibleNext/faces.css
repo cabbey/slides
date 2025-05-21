@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./WOFF2/AtkinsonHyperlegibleNext-Regular.woff2) format('woff');
+  src: url(./TTF/AtkinsonHyperlegibleNext-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: normal;
+  font-weight: 700;
+  src: url(./WOFF2/AtkinsonHyperlegibleNext-Bold.woff2) format('woff');
+  src: url(./TTF/AtkinsonHyperlegibleNext-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: italic;
+  font-weight: 400;
+  src: url(./WOFF2/AtkinsonHyperlegibleNext-RegularItalic.woff2) format('woff');
+  src: url(./TTF/AtkinsonHyperlegibleNext-RegularItalic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: italic;
+  font-weight: 700;
+  src: url(./WOFF2/AtkinsonHyperlegibleNext-BoldItalic.woff2) format('woff');
+  src: url(./TTF/AtkinsonHyperlegibleNext-BoldItalic.ttf) format('truetype');
+}
