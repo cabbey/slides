@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Advanced Rector Shenanigans with cabbey</title>
+		<meta name="author" content="cabbey@smugmug.com">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+
+    <!-- my theme for the slide deck -->
+		<link rel="stylesheet" href="dist/theme/cabbey.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/solarized-light.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1 class="r-fit-text">Advanced Rector Shenanigans</h1>
+					<span style="float: left; width: 25%; ">
+						<img src="./media/longhorn.svg" alt="Longhorn PHP 2025"/>
+					</span>
+					<span style="float: right; width: 25%; ">
+						<img src="./media/Awesome%20Logo%20no%20back.svg" alt="əwesome"/>
+					</span>
+					<p>by cabbey (he/him)<br>25 October 2025</p>
+          <p><img src="https://phpc.social/packs/media/images/logo-d4b5dc90fd3e117d141ae7053b157f58.svg" alt="Mastodon" style="height: 0.6em; margin: 0; alignment-baseline: center;"> cabbey@phpc.social</p>
+          <p><img src="media/mark-github-24.svg" alt="github: " style="height: 0.6em; margin: 0; alignment-baseline: center;"/> cabbey</p>
+          <br clear="all" />
+          <p>follow along: cabbey.github.io/slides</p>
+				</section>
+        <guidepost>intro cabbey</guidepost>
+				<section>
+					<section>
+						<h1 class="r-fit-text">Intro to cabbey</h1>
+					</section>
+					<section>
+						<div>
+							<img src="media/cabbey.jpg" alt="cabbey"/>
+							<span class="attribution">Photo by Chris MacAskill</span>
+						</div>
+					</section>
+					<section>
+						<h1>Disclaimers</h1>
+						<p>I'm not a member of the RectorPHP project.</p>
+						<p>I've submitted 1 patch to the project. <small>(so far)</small></p>
+					</section>
+				</section>
+        <guidepost>intro awesome</guidepost>
+        <section>
+					<section>
+						<h1>Intro to Awesome</h1>
+						<p>Building a better world through<br>
+							the power of photography.</p>
+						<a href="//awesome.co">awesome.co</a>
+						
+					</section>
+					<section data-background-color="#002b36">
+						<a href="//awesome.co"><img src="media/awesome%20horizontal%20over%20dark%20600Asset%206.png" alt="awesome"/></a>
+						
+					</section>
+					<section data-background-color="#002b36">
+						<a href="//smugmug.com"><img src="media/SmugMug%20Logo%20on%20black.jpg" alt="SmugMug"/></a>
+						
+					</section>
+          <section data-background-color="#002b36">
+            <a href="//flickr.com"><img src="media/Flickr%20Logo%20on%20black%20newer.jpg" alt="Flickr"/></a>
+            
+          </section>
+					<section data-background-video-loop="loop" data-background-video="./media/filmsLoop.mp4,./media/filmsLoop.webm">
+						<a href="//smugmug.com/films"><h1>SmugMug Films</h1></a>
+						
+					</section>
+					<section>
+						<a href="//flickr.org"><img src="media/flickr-logo-new.svg" alt="Flickr Foundation" width="1200"/></a>
+						
+					</section>
+          <section data-background-color="#002b36">
+            <a href="//thisweekinphoto.com"><img src="media/TWiP%20Logo%20white%20on%20black.jpg" alt="TWiP"/></a>
+            
+          </section>
+					<section>
+						<h1>More to come...</h1>
+						
+					</section>
+				</section>
+
+
+        <guidepost>backstory</guidepost>
+
+        <section>
+          <section><h1>Why?</h1></section>
+          <section>
+            <h2>Our codebases are now old enough to drink.</h2>
+            
+          </section>
+          <section>
+            <h2>It makes some<br/>of us want to.</h2>
+            
+          </section>
+
+          <section><h1>RectorPHP to the Rescue!</h1></section>
+
+          <section data-transition="fade-out"><h2>Automate it all.</h2></section>
+          <section data-transition="fade-in"><h2>Automate <strike>it all</strike><br/> as much as is practical.</h2></section>
+
+          <section>
+            <h1>Confession</h1>
+            
+          </section>
+
+        </section>
+
+
+        <guidepost>dev-mode</guidepost>
+        <section>
+          <section data-transition="fade-out">
+            <h1>Switch to<br/>Dev Mode</h1>
+            
+          </section>
+          <section data-transition="fade-in" data-background-color="#002b36">
+            <h1 style="color: #fdf6e3">Switch to<br/>Dev Mode</h1>
+          </section>
+          <section>
+            <p>Main sources: <img src="media/mark-github-24.svg" alt="github" style="height: 0.6em; margin: 0; alignment-baseline: center;"/> github.com/rectorphp/rector-src</p>
+            <p>Other rules: <img src="media/mark-github-24.svg" alt="github" style="height: 0.6em; margin: 0; alignment-baseline: center;"/> github.com/rectorphp/rector-*</p>
+            <p>Sources are all php8.2, they refactor it down to 7.4 for the published code in rectorphp/rector... with rector!</p>
+          </section>
+
+        </section>
+
+        <guidepost>intro Rule class</guidepost>
+        <section>
+          <section><h1 class="r-fit-text">The Rule Class</h1></section>
+          <section><h1 class="r-fit-text">The <strike>Rule Class</strike><br/> Rector Interface</h1></section>
+          <section>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="">
+interface RectorInterface extends NodeVisitor
+{
+    /**
+     * List of nodes this class checks, classes
+     * that implements \PhpParser\Node
+     * See beautiful map of all nodes
+     * https://github.com/rectorphp/php-parser-nodes-docs#node-overview
+     *
+     * @return array&lt;class-string&lt;Node>>
+     */
+    public function getNodeTypes() : array;
+    /**
+     * Process Node of matched type
+     * @return Node|Node[]|null|NodeTraverser::*
+     */
+    public function refactor(Node $node);
+}
+              </code>
+            </pre>
+            
+
+          </section>
+          <section data-transition="fade-out" data-auto-animate>
+            <h1 class="r-fit-text">Example</h1>
+            <p>Replace all use of the trait <code>YeOldeLib\Log\LogAware</code> with <code>Shiny\NewThing\Logging\LoggerAwareTrait</code>.</p>
+          </section>
+          <section data-transition="fade-in convex-out" data-auto-animate>
+            <h1 class="r-fit-text">Example</h1>
+            <pre class="ast-code-sample">
+              <code class="diff" data-trim>
+ class UsesLogging {
+-    use \YeOldeLib\Log\LogAware;
++    use \Shiny\NewThing\Logging\LoggerAwareTrait;
+              </code>
+            </pre>
+          </section>
+
+          <section data-transition="convex">
+            <h1 class="r-fit-text">Bootstrap the Class</h1>
+            <pre class="ast-code-sample r-stretch">
+              <code class="shell" data-trim data-line-numbers="|9,10,12">
+vendor/bin/rector custom-rule
+
+ What is the name of the rule class (e.g. "LegacyCallToDbalMethodCall")?:
+ > Demo
+
+Generated files
+===============
+
+ * utils/rector/tests/Rector/DemoRector/Fixture/some_class.php.inc
+ * utils/rector/tests/Rector/DemoRector/config/configured_rule.php
+ * utils/rector/src/Rector/DemoRector.php
+ * utils/rector/tests/Rector/DemoRector/DemoRectorTest.php
+
+ [OK] Base for the "DemoRector" rule was created. Now you can fill the missing
+      parts
+
+ [OK] We also update /Volumes/Git/RectorExamples/phpunit.xml, to
+      add a rector test suite.
+       You can run the rector tests by running: phpunit --testsuite rector
+
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-transition="convex-in" data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="|2,4|6,10">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+  }
+
+  private function refactor(Node $node)
+  {
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section>
+            <h1 class="r-fit-text">AST Dumping</h1>
+            <p>GetRector.com/AST</p>
+          </section>
+          <section>
+            <h1 class="r-fit-text">AST Dumping</h1>
+            <img src="media/getrector-ast.png" alt="getrector-ast screen shot" />
+          </section>
+          <section>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim>
+class foo {
+  use YeOldeLib\Log\LogAware;
+}
+              </code>
+            </pre>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim data-line-numbers="|8|8-15|10-12">
+PhpParser\Node\Stmt\Class_(
+  attrGroups: []
+  flags: 0
+  name: PhpParser\Node\Identifier( name: "foo" )
+  extends: null
+  implements: []
+  stmts: [
+    0: PhpParser\Node\Stmt\TraitUse(
+      traits: [
+        0: PhpParser\Node\Name\FullyQualified(
+             parts: ["YeOldeLib","Log","LogAware"]
+           )
+      ]
+      adaptations: []
+    )
+  ]
+)
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+  }
+
+  private function refactor(Node $node)
+  {
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+    foreach ($node->traits as $idx => $trait) {
+    }
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+    foreach ($node->traits as $idx => $trait) {
+      if ('YeOldeLib\Log\LogAware' === $trait->toString()) {
+
+      }
+    }
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+    foreach ($node->traits as $idx => $trait) {
+      if ('YeOldeLib\Log\LogAware' === $trait->toString()) {
+        $node->traits[$idx] = new Node\Name\FullyQualified(
+          'Shiny\NewThing\Logging\LoggerAwareTrait'
+        );
+      }
+    }
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate data-transition="convex-out">
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+    foreach ($node->traits as $idx => $trait) {
+      if ('YeOldeLib\Log\LogAware' === $trait->toString()) {
+        $node->traits[$idx] = new Node\Name\FullyQualified(
+          'Shiny\NewThing\Logging\LoggerAwareTrait'
+        );
+      }
+    }
+
+    return $node;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-transition="convex">
+            <h1 class="r-fit-text">Valid returns from <code>refactor()</code></h1>
+            <dl>
+              <dt><code>null</code></dt><dd>no modifications.</dd>
+              <dt><code>Node</code></dt><dd>replace the visited one.</dd>
+              <dt><code>Node[]</code></dt><dd>inject more code than you started with.</dd>
+            </dl>
+            
+          </section>
+          <section data-transition="convex-in">
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="15,18,25,27-29">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [
+      Node\Stmt\TraitUse::class,
+    ];
+  }
+
+  private function refactor(Node $node)
+  {
+    $madeChanges = false;
+    foreach ($node->traits as $idx => $trait) {
+      if ('YeOldeLib\Log\LogAware' === $trait->toString()) {
+        $madeChanges = true;
+        $node->traits[$idx] = new Node\Name\FullyQualified(
+          'Shiny\NewThing\Logging\LoggerAwareTrait'
+        );
+      }
+    }
+
+    if ($madeChanges) {
+      return $node;
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section>
+            <h1 class="r-fit-text">Let's try it out</h1>
+            <pre class="ast-code-sample">
+							<code class="diff" data-trim data-line-numbers="1-3|4|5-10|11-17|18-21|23-26">
+          $ vendor/bin/rector process \
+                --config example/uselogging-config.php \
+                --dry-run
+          1/1 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+          1 file with changes
+          ===================
+
+          1) example/UsesLogging.php:3
+
+          ---------- begin diff ----------
+          @@ @@
+           declare(strict_types=1);
+
+           class UsesLogging {
+          -    use \YeOldeLib\Log\LogAware;
+          +    use \Shiny\NewThing\Logging\LoggerAwareTrait;
+           }
+          ----------- end diff -----------
+
+          Applied rules:
+          * MigrateToModernLogging
+
+
+
+          [OK] 1 file would have been changed (dry-run) by Rector
+
+							</code>
+						</pre>
+          </section>
+
+        </section>
+
+        <guidepost>re-coding calls</guidepost>
+        <section>
+          <section><h1>Turn it up a notch</h1></section>
+
+          <section data-transition="fade-out" data-auto-animate>
+            <h1 class="r-fit-text">Next Step</h1>
+            <p>Rewrite <code>getlogger()</code> and <code>log()</code> calls to modern interfaces.</p>
+            
+          </section>
+          <section data-transition="fade" data-auto-animate>
+            <h1 class="r-fit-text">Next Step</h1>
+            <pre class="ast-code-sample">
+              <code class="diff" data-trim>
+-self::getLogger()
++self::getStaticLogger()
+              </code>
+            </pre>
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim>
+self::getLogger();
+              </code>
+            </pre>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim data-line-numbers="">
+PhpParser\Node\Stmt\Expression(
+  expr: PhpParser\Node\Expr\StaticCall(
+    class: PhpParser\Node\Name( parts: ["self"] )
+    name: PhpParser\Node\Identifier( name: "getLogger" )
+    args: []
+  )
+)
+              </code>
+            </pre>
+
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim>
+self::getLogger()->log('foo');
+              </code>
+            </pre>
+
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="|3-7">
+PhpParser\Node\Stmt\Expression(
+  expr: PhpParser\Node\Expr\MethodCall(
+    var: PhpParser\Node\Expr\StaticCall(
+      class: PhpParser\Node\Name( parts: ["self"] )
+      name: PhpParser\Node\Identifier( name: "getLogger" )
+      args: []
+    )
+    name: PhpParser\Node\Identifier( name: "log" )
+    args: [
+      0: PhpParser\Node\Arg(
+        name: null
+        value: PhpParser\Node\Scalar\String_( value: "foo" )
+        byRef: false
+        unpack: false
+      )
+    ]
+  )
+)
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="8">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="13-16">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+          <section data-background-color="#dc322f" data-transition="fade-out">
+            <p class="r-fit-text r-stretch error">
+              [ERROR] Could not process<br/> "example/UsesLogging.php"<br/> file, due to: <br/>System error: "Call<br/> to undefined method<br/> PhpParser\Node\Expr<br/>\StaticCall::toString()"
+            </p>
+            
+          </section>
+
+          <section data-transition="fade-in convex-out">
+            <img src="media/xdebug-logo.svg" alt="xdebug" class="r-stretch"/>
+            
+          </section>
+
+          <section data-transition="convex">
+            <h1 class="r-fit-text">Command Line Options</h1>
+            <ul>
+              <li><code>--clear-cache</code></li>
+              <li><code>--xdebug</code></li>
+              <li><code>--debug</code></li>
+            </ul>
+            
+          </section>
+
+          <section data-transition="convex-in" data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="13-15">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+
+
+
+          <section data-auto-animate>
+            <h1 class="r-fit-text">Next Next Step</h1>
+            <pre class="ast-code-sample">
+              <code class="diff" data-trim>
+-self::log('message', 'level');
++self::getStaticLogger()->level('message');
+              </code>
+            </pre>
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim >
+self::log('message', 'level');
+              </code>
+            </pre>
+
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers>
+    PhpParser\Node\Expr\StaticCall(
+      class: PhpParser\Node\Name( parts: ["self"] )
+      name: PhpParser\Node\Identifier( name: "log" )
+      args: [
+        0: PhpParser\Node\Arg(
+          name: null
+          value: PhpParser\Node\Scalar\String_( value: "message" )
+          byRef: false
+          unpack: false
+        )
+        1: PhpParser\Node\Arg(
+          name: null
+          value: PhpParser\Node\Scalar\String_( value: "level" )
+          byRef: false
+          unpack: false
+        )
+      ]
+    )
+              </code>
+            </pre>
+            
+          </section>
+          <section data-auto-animate>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim >
+self::getStaticLogger()->level('message');
+              </code>
+            </pre>
+
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers>
+    PhpParser\Node\Expr\MethodCall(
+      var: PhpParser\Node\Expr\StaticCall(
+        class: PhpParser\Node\Name( parts: ["self"] )
+        name: PhpParser\Node\Identifier( name: "getStaticLogger" )
+        args: []
+      )
+      name: PhpParser\Node\Identifier( name: "level" )
+      args: [
+        0: PhpParser\Node\Arg(
+          name: null
+          value: PhpParser\Node\Scalar\String_( value: "message" )
+          byRef: false
+          unpack: false
+        )
+      ]
+    )
+              </code>
+            </pre>
+            
+          </section>
+
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="22-99">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    if ('log' === $node->name->toString()) {
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name('self'),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="23">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    if ('log' === $node->name->toString()) {
+      $message = $node->getArgs()[0];
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name('self'),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="25,32">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    if ('log' === $node->name->toString()) {
+      $args = $node->getArgs();
+      $message = $args[0];
+      $logLevel = $args[1]->value;
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name('self'),
+          new Node\Identifier('getStaticLogger')
+        ),
+        new Node\Identifier($logLevel->toString()),
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim >
+'level';
+$level;
+CONST_LEVEL;
+self::LEVEL;
+              </code>
+            </pre>
+
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers>
+[
+  0: PhpParser\Node\Stmt\Expression(
+    expr: PhpParser\Node\Scalar\String_( value: "level" )
+  )
+  1: PhpParser\Node\Stmt\Expression(
+    expr: PhpParser\Node\Expr\Variable( name: "level" )
+  )
+  2: PhpParser\Node\Stmt\Expression(
+    expr: PhpParser\Node\Expr\ConstFetch(
+      name: PhpParser\Node\Name\FullyQualified( parts: ["CONST_LEVEL"] )
+    )
+  )
+  3: PhpParser\Node\Stmt\Expression(
+    expr: PhpParser\Node\Expr\ClassConstFetch(
+      class: PhpParser\Node\Name( parts: ["self"] )
+      name: PhpParser\Node\Identifier( name: "LEVEL" )
+    )
+  )
+]
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="25,32">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    if ('log' === $node->name->toString()) {
+      $args = $node->getArgs();
+      $message = $args[0];
+      $logLevel = self::LogLevelExprToIdentifier($args[1]->value);
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name('self'),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="1-3|5,7,9|6|8|10-21|24">
+private static function LogLevelExprToIdentifier(
+  Node\Expr $input
+): Node\Identifier
+{
+  if ($input instanceof Node\Scalar\String_) {
+    $logLevel = $input->value;
+  } else if ($input instanceof Node\Expr\Variable) {
+    $loglevel = 'unknown_manual_cleanup_needed';
+  } else {
+    // ConstFetch or ClassConstFetch
+    $constValue = $input->name->toLowerString()
+    $logLevel = match ($constValue) {
+      'log_level_info', 'level_info' => 'info',
+      'log_level_notice', 'level_notice' => 'notice',
+      'log_level_warning', 'level_warning' => 'warning',
+      'log_level_error', 'level_error' => 'error',
+      'log_level_deprecated', 'level_deprecated',
+      'log_level_depreciated' => 'deprecated',
+      'log_level_strict', 'level_strict' => 'strict',
+      default => 'unknown_manual_cleanup_needed'
+    };
+  }
+
+  return new Node\Identifier($logLevel);
+}
+              </code>
+            </pre>
+            
+          </section>
+
+
+          <section data-background-color="#dc322f">
+            <p class="error">
+              [ERROR] Could not process "example/UsesLogging.php" file, due to: System error: "Call to a member function toLowerString() on null"
+            </p>
+            
+          </section>
+
+          <section data-background-color="#dc322f">
+            <p class="error">
+              [ERROR] Could not process "example/UsesLogging.php" file, due to: System error: "Example::LogLevelExprToIdentifier(): Argument #1 ($input) must be of type PhpParser\Node\Expr, null given..."
+            </p>
+            
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">non XDebug debugging</h1>
+            <dl>
+              <dt><code>dump_node(Node $node)</code></dt>
+              <dd>prints the AST for the node</dd>
+              <dt><code>print_node(Node $node)</code></dt>
+              <dd>prints the source code of the node</dd>
+            </dl>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim data-line-numbers="">
+public static function log(
+  string $message,
+  string $level = LogLevel::NOTICE
+);
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-auto-animate>
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="2,5-6">
+private static function LogLevelExprToIdentifier(
+  ?Node\Expr $input
+): Node\Identifier
+{
+  if (null === $input) {
+    $logLevel = 'notice';
+  } else if ($input instanceof Node\Scalar\String_) {
+    $logLevel = $input->value;
+  } else if ($input instanceof Node\Expr\Variable) {
+    $loglevel = 'unknown_manual_cleanup_needed';
+  } else {
+    // ConstFetch or ClassConstFetch
+    $constValue = $input->name->toLowerString()
+    $logLevel = match ($constValue) {
+      'log_level_info', 'level_info' => 'info',
+      'log_level_notice', 'level_notice' => 'notice',
+      'log_level_warning', 'level_warning' => 'warning',
+      'log_level_error', 'level_error' => 'error',
+      'log_level_deprecated', 'level_deprecated',
+      'log_level_depreciated' => 'deprecated',
+      'log_level_strict', 'level_strict' => 'strict',
+      default => 'unknown_manual_cleanup_needed'
+    };
+  }
+
+  return new Node\Identifier($logLevel);
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-background-color="#dc322f">
+            <p class="error">
+              [ERROR] Could not process "example/UsesLogging.php" file, due to: System error: "Call to a member function toLowerString() on null"
+            </p>
+            
+          </section>
+
+          <section>
+            <img src="media/xdebug-logo.svg" alt="xdebug" class="r-stretch"/>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text"><code>$input</code><br/>is of type<br/><code>Scalar\Int_</code></h1>
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">uh... huh? 😵‍💫</h1>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim >
+Profiler::log('activity', 0, 42, $progress);
+              </code>
+            </pre>
+            
+          </section>
+
+          <section >
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="17-26|40">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    $classToString = $node->class->toString();
+    if (
+      !(
+        $classToString == 'self'
+        || $classToString == 'static'
+        || $classToString == 'parent'
+      )
+    ) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    if ('log' === $node->name->toString()) {
+      $args = $node->getArgs();
+      $message = $args[0];
+      $logLevel = self::LogLevelExprToIdentifier($args[1]->value);
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name($classToString),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section data-background-color="#dc322f">
+            <p class="error">
+              [ERROR] Could not process "example/UsesLogging.php" file, due to: System error: "Call to a member function toLowerString() on null"
+            </p>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim >
+self::log($activity, 0, 99, $progress);
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h1 class="r-fit-text">Introducing Context</h1>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample">
+              <code class="php" data-trim data-line-numbers="">
+$scope = ScopeFetcher::fetch($node);
+              </code>
+            </pre>
+            
+          </section>
+
+          <section >
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="33,37-38">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    $classToString = $node->class->toString();
+    if (
+      !(
+        $classToString == 'self'
+        || $classToString == 'static'
+        || $classToString == 'parent'
+      )
+    ) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    $scope = ScopeFetcher::fetch($node);
+
+    if (
+      'log' === $node->name->toString()
+      && null !== $scope->getClassReflection()
+        ->getAncestorWithClassName('YeOldeLib\Base')
+    ) {
+      $args = $node->getArgs();
+      $message = $args[0];
+      $logLevel = self::LogLevelExprToIdentifier($args[1]->value);
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name($classToString),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section >
+            <pre class="ast-code-sample r-stretch">
+              <code class="php" data-trim data-line-numbers="37-38">
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+
+class MigrateToNewLogging extends AbstractRector
+{
+  public function getNodeTypes(): array
+  {
+    return [ Node\Expr\StaticCall::class ];
+  }
+
+  private function refactor(Node $node)
+  {
+    if ($node->name instanceof Expr) {
+      return null;
+    }
+
+    $classToString = $node->class->toString();
+    if (
+      !(
+        $classToString == 'self'
+        || $classToString == 'static'
+        || $classToString == 'parent'
+      )
+    ) {
+      return null;
+    }
+
+    if ('getLogger' === $node->name->toString()) {
+      $node->name = new Node\Identifier('getStaticLogger');
+      return $node;
+    }
+
+    $scope = ScopeFetcher::fetch($node);
+
+    if (
+      'log' === $node->name->toString()
+      && 'YeOldeLib\Log\LogAware' === $scope->getTraitReflection()
+        ->getName()
+    ) {
+      $args = $node->getArgs();
+      $message = $args[0];
+      $logLevel = self::LogLevelExprToIdentifier($args[1]->value);
+
+      return new Expr\MethodCall(
+        new Expr\StaticCall(
+          new Node\Name($classToString),
+          new Node\Identifier('getStaticLogger')
+        ),
+        $logLevel,
+        [
+          $message
+        ]
+      );
+    }
+
+    return null;
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+
+
+        </section>
+
+
+        <guidepost>advanced functionality</guidepost>
+        <section>
+          <section><h1 class="r-fit-text">Getting (optionally) Fancy</h1></section>
+
+          <section>
+            <h2 class="r-fit-text">Conditional PHP versions?</h2>
+            <ol class="r-fit-text">
+              <li class="fragment" data-fragment-index="1"><code class="hljs php">implements MinPhpVersionInterface</code></li>
+              <li class="fragment" data-fragment-index="2"><code class="hljs php">public function provideMinPhpVersion() : int;</code></li>
+              <li class="fragment" data-fragment-index="3"><code class="hljs php">return \Rector\ValueObject\PhpVersion::PHP_80;</code></li>
+              <li class="fragment" data-fragment-index="3"><code class="hljs php">return \Rector\ValueObject\PhpVersionFeature::NEVER_TYPE;</code></li>
+            </ol>
+          </section>
+
+          <section><h2>Submitting upstream?</h2></section>
+          <section>
+            <h2 class="r-fit-text">Additional Work Needed:</h2>
+            <ol>
+              <li class="fragment">Test Cases</li>
+              <li class="fragment"><code>public function getRuleDefinition(): RuleDefinition</code>
+                <ul>
+                  <li>Summary of what Rector does</li>
+                  <li>Before &amp; after code samples</li>
+                </ul>
+              </li>
+              <li class="fragment">One thing at a time</li>
+              <li class="fragment">See <img src="media/mark-github-24.svg" alt="github: " style="height: 0.6em; margin: 0; alignment-baseline: center;"/><code>rector-src/CONTRIBUTING.md</code> for more</li>
+            </ol>
+            
+          </section>
+
+          <section>
+            <h2>Test Infrastructure</h2>
+            <p>Test cases for rules are in <code>Rector-src/rules-tests</code>.</p>
+            <p>Tests extend from <code>AbstractRectorTestCase</code>.</p>
+            <p>Expected infrastructure around Config and Fixtures.</p>
+          </section>
+
+          <section>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="|13-17|19-24|26-29">
+&lt;?php
+
+declare(strict_types=1);
+
+namespace Rector\Tests\Php85\Rector\ArrayDimFetch\ArrayFirstLastRector;
+
+use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use Rector\Testing\PHPUnit\AbstractRectorTestCase;
+
+final class ArrayFirstLastRectorTest extends AbstractRectorTestCase
+{
+    #[DataProvider('provideData')]
+    public function test(string $filePath): void
+    {
+        $this->doTestFile($filePath);
+    }
+
+    public static function provideData(): Iterator
+    {
+        return self::yieldFilesFromDirectory(
+          __DIR__ . '/Fixture'
+        );
+    }
+
+    public function provideConfigFilePath(): string
+    {
+        return __DIR__ . '/config/configured_rule.php';
+    }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="|10|12">
+&lt;?php
+
+declare(strict_types=1);
+
+use Rector\Config\RectorConfig;
+use Rector\Php85\Rector\ArrayDimFetch\ArrayFirstLastRector;
+use Rector\ValueObject\PhpVersion;
+
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->rule(ArrayFirstLastRector::class);
+
+    $rectorConfig->phpVersion(PhpVersion::PHP_85);
+};
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <pre class="ast-code-sample r-stretch">
+              <code data-id="code-animation" class="php" data-trim data-line-numbers="1-16|17|18-33">
+&lt;?php
+
+declare(strict_types=1);
+
+namespace Rector\Tests\Php85\Rector\ArrayDimFetch\ArrayFirstLastRector\Fixture;
+
+final class Fixture
+{
+    public function run(array $array)
+    {
+        echo $array[array_key_first($array)];
+        echo $array[array_key_last($array)];
+    }
+}
+
+?&gt;
+-----
+&lt;?php
+
+declare(strict_types=1);
+
+namespace Rector\Tests\Php85\Rector\ArrayDimFetch\ArrayFirstLastRector\Fixture;
+
+final class Fixture
+{
+    public function run(array $array)
+    {
+        echo array_first($array);
+        echo array_last($array);
+    }
+}
+
+?&gt;
+              </code>
+            </pre>
+            
+          </section>
+
+
+        </section>
+
+
+        <guidepost>Thanks</guidepost>
+        <section>
+          <h1 class="r-fit-text">Thanks to:</h1>
+          <ul>
+            <li><a href="https://www.brailleinstitute.org/freefont/">The Braille Institute</a></li>
+            <li><a href="https://ethanschoonover.com/solarized/">Ethan Schoonover</a></li>
+            <li><a href="https://revealjs.com">Reveal.js</a></li>
+            <li class="fragment">You! (yes, you.)</li>
+          </ul>
+          
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+          <h1>Thoughts?</h1>
+          <table>
+            <tr>
+              <td style="text-align: center; vertical-align: top;">
+                <p><a href="https://joind.in/talk/1839c">joind.in/talk/1839c</a></p>
+                <p><img src="https://phpc.social/packs/media/images/logo-d4b5dc90fd3e117d141ae7053b157f58.svg" alt="Mastodon:" style="height: 0.6em; margin: 0; alignment-baseline: center;"> cabbey@phpc.social</p>
+              </td>
+              <td>
+                <img src="media/qr-joind-advanced.png" alt=""/>
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section data-background-image="media/qr-joind-advanced.png" data-background-size="contain">
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/mermaid/mermaid.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				mermaid: {
+					theme: 'base',
+					themeVariables: {
+						'background': '#fdf6e3',
+						'primaryColor': '#859900',
+						'primaryTextColor': '#fdf6e3',
+						'primaryBorderColor': '#073642',
+						'secondaryColor': '#2aa198',
+						'tertiaryColor': '#268bd2',
+						'lineColor': '#002b36',
+						// 'edgeLabelBackground': '#eee8d5',
+						// 'secondaryTextColor': '#268bd2',
+						'fontFamily': 'Atkinson Hyperlegible Next',
+					},
+					// flowchart: {
+					//   curve: 'linear',
+					// },
+				},
+
+				// Learn about plugins: https://revealjs.com/plugins/
+          // RevealMarkdown
+				plugins: [ RevealHighlight, RevealNotes, RevealMermaid ]
+			});
+		</script>
+	</body>
+</html>
